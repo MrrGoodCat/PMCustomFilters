@@ -1,0 +1,23 @@
+select {
+    font-family: 'Open Sans', sans-serif;
+  }
+  
+  select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  select option:hover {
+    background-color: #eee;
+  }
+
+  select::after {
+    content: '\25BC';
+    font-size: 16px;
+    color: #555;
+    right: 8px;
+    top: 50%;
+    position: absolute;
+    transform: translateY(-50%);
+  }

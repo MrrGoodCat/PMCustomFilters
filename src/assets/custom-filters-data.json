@@ -1,0 +1,14 @@
+[
+    {
+      "label": "Agent ID",
+      "value": 1
+    },
+    {
+      "label": "Interaction ID",
+      "value": 2
+    },
+    {
+      "label": "NX PCI Violation",
+      "value": 3
+    }
+  ]
