@@ -1,4 +1,6 @@
 export interface ComboBoxItem {
-    label: string,
-    value: number
+    key: number,
+    name?: string,
+    value?: string,
+    data?: any
 }

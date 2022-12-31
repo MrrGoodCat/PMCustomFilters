@@ -1,34 +1,26 @@
 [
     {
-      "label": "Is",
-      "value": 1
+      "name": "Is"
     },
     {
-      "label": "Is Not",
-      "value": 2
+      "name": "Is Not"
     },
     {
-      "label": "Contains",
-      "value": 3
+      "name": "Contains"
     },
     {
-      "label": "Any of",
-      "value": 4
+      "name": "Any of"
     },
     {
-      "label": "<",
-      "value": 5
+      "name": "<"
     },
     {
-      "label": ">",
-      "value": 6
+      "name": ">"
     },
     {
-      "label": ">=",
-      "value": 7
+      "name": ">="
     },
     {
-      "label": "<=",
-      "value": 8
+      "name": "<="
     }
   ]

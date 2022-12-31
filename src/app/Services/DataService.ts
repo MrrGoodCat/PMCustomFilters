@@ -15,15 +15,18 @@ export class DataService {
     /**
      * Get custom filters list from json data file
      */
-    public getCustomFilters(): Observable<ComboBoxItem[]> {
-        return new Observable<ComboBoxItem[]>((observer) => {
-            this.http.get<any[]>('/assets/custom-filters-data.json').pipe(
+    public getCustomFilters(): Observable<string[]> {
+        return new Observable<string[]>((observer) => {
+            this.http.get<any[]>('/assets/custom-filters-data.json')
+            .pipe(
                 map(data => {
                     return data.map(item => {
-                        return { label: item.label, value: item.value };
+
+                        return item.name;
                     })
                 })
-            ).subscribe(data => {
+            )
+            .subscribe(data => {
                 observer.next(data);
                 observer.complete();
             })
@@ -33,15 +36,18 @@ export class DataService {
     /**
      * name
      */
-    public getOperators(): Observable<ComboBoxItem[]> {
-        return new Observable<ComboBoxItem[]>((observer) => {
-            this.http.get<any[]>('/assets/operators.json').pipe(
+    public getOperators(): Observable<string[]> {
+        return new Observable<string[]>((observer) => {
+            this.http.get<any[]>('/assets/operators.json')
+            .pipe(
                 map(data => {
                     return data.map(item => {
-                        return { label: item.label, value: item.value };
+                        return item.name;
+                        // return { label: item.label, value: item.value };
                     })
                 })
-            ).subscribe(data => {
+            )
+            .subscribe(data => {
                 observer.next(data);
                 observer.complete();
             })

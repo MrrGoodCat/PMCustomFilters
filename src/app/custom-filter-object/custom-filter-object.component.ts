@@ -1,8 +1,7 @@
-import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
-import { Component, OnInit } from '@angular/core';
+
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ComboBoxItem } from '../Interfaces/ComboBoxItem';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { DataService } from '../Services/DataService';
 
 @Component({
@@ -10,10 +9,9 @@ import { DataService } from '../Services/DataService';
   templateUrl: './custom-filter-object.component.html',
   styleUrls: ['./custom-filter-object.component.scss']
 })
-export class CustomFilterObjectComponent implements OnInit {
+export class CustomFilterObjectComponent implements OnInit, OnDestroy {
 
   constructor(
-    private http: HttpClient,
     private dataService: DataService,
     ) { 
       this.customFilters = [];
@@ -22,26 +20,39 @@ export class CustomFilterObjectComponent implements OnInit {
 
   public customFilters: ComboBoxItem[];
   public operators: ComboBoxItem[];
+  
+  private subscription = new Subscription();
+
 
   ngOnInit(): void {
-    this.dataService.getCustomFilters().subscribe((data) => {
-      this.customFilters = data;
-    });
+    this.subscription.add(this.dataService.getCustomFilters().subscribe((data) => {
+      this.customFilters = this.convertCustomFiltersToComboBoxItems(data);
+    }));
 
-    this.dataService.getOperators().subscribe((data) => {
-      this.operators = data;
-    });
-    
-    // this.http.get<any[]>('/assets/custom-filters-data.json').pipe(
-    //   map(data => { 
-    //     return data.map(item => {
-    //       return { label: item.label, value: item.value };
-    //   })
-    // })
-    // ).subscribe(data => {
-    //   this.customFilters = data;
-    //   return data;
-    // })
+    this.subscription.add(this.dataService.getOperators().subscribe((data) => {
+      this.operators = this.convertOperatorsToComboBoxItems(data);
+    }));
+  }
+
+  private convertCustomFiltersToComboBoxItems(customFilters: string[]): ComboBoxItem[] {
+    return customFilters.map((filterName, index) => {
+      return {
+        key: index,
+        name: filterName
+      }
+    })
+  }
+  private convertOperatorsToComboBoxItems(operators: string[]): ComboBoxItem[] {
+    return operators.map((operator, index) => {
+      return {
+        key: index,
+        name: operator
+      }
+    })
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
 
