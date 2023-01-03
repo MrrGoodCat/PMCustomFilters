@@ -3,24 +3,24 @@
       "name": "Is"
     },
     {
-      "name": "Is Not"
+      "name": "IsNot"
     },
     {
       "name": "Contains"
     },
     {
-      "name": "Any of"
+      "name": "AnyOf"
     },
     {
-      "name": "<"
+      "name": "Greater"
     },
     {
-      "name": ">"
+      "name": "Less"
     },
     {
-      "name": ">="
+      "name": "GreaterOrEqual"
     },
     {
-      "name": "<="
+      "name": "LessOrEqual"
     }
   ]

@@ -1,6 +1,8 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { map, Observable } from "rxjs"
+import { CustomFiltersOperators } from "../Enums/CustomFiltersOperators";
+import { CustomFilterTypes } from "../Enums/CustomFilterTypes";
 import { ComboBoxItem } from "../Interfaces/ComboBoxItem";
 
 @Injectable({
@@ -15,8 +17,8 @@ export class DataService {
     /**
      * Get custom filters list from json data file
      */
-    public getCustomFilters(): Observable<string[]> {
-        return new Observable<string[]>((observer) => {
+    public getCustomFilters(): Observable<CustomFilterTypes[]> {
+        return new Observable<CustomFilterTypes[]>((observer) => {
             this.http.get<any[]>('/assets/custom-filters-data.json')
             .pipe(
                 map(data => {
@@ -36,8 +38,8 @@ export class DataService {
     /**
      * name
      */
-    public getOperators(): Observable<string[]> {
-        return new Observable<string[]>((observer) => {
+    public getOperators(): Observable<CustomFiltersOperators[]> {
+        return new Observable<CustomFiltersOperators[]>((observer) => {
             this.http.get<any[]>('/assets/operators.json')
             .pipe(
                 map(data => {

@@ -1,11 +1,65 @@
 [
-    {
-      "name": "Agent ID"
-    },
-    {
-      "name": "Interaction ID"
-    },
-    {
-      "name": "NX PCI Violation"
-    }
-  ]
+  {
+    "name": "Site ID"
+  },
+  {
+    "name": "Switch ID"
+  },
+  {
+    "name": "Recorder ID"
+  },
+  {
+    "name": "Complete ID"
+  },
+  {
+    "name": "Interaction ID"
+  },
+  {
+    "name": "Direction"
+  },
+  {
+    "name": "Agent ID"
+  },
+  {
+    "name": "Agent phone number"
+  },
+  {
+    "name": "Customer phone number"
+  },
+  {
+    "name": "DNIS (Segment Dialed Number)"
+  },
+  {
+    "name": "In Litigation Hold"
+  },
+  {
+    "name": "Exception ID"
+  },
+  {
+    "name": "Exception Description"
+  },
+  {
+    "name": "Playback Lock"
+  },
+  {
+    "name": "NX_Recording-Consent-Violations-Category"
+  },
+  {
+    "name": "NX_Privacy-Deletion-Category"
+  },
+  {
+    "name": "NX_Sales-Consent-Violations-Category"
+  },
+  {
+    "name": "NX_Script-Adherence-Violations-Category"
+  },
+  {
+    "name": "NX_PCI-Violations"
+  },
+  {
+    "name": "Duration"
+  },
+  {
+    "name": "Segment Vector Number"
+  }
+]

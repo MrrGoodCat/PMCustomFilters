@@ -1,4 +1,10 @@
-<div class="object-container">
-    <app-dropdown [data]="customFilters"></app-dropdown>
-    <app-dropdown [data]="operators"></app-dropdown>
-</div>
+<form [formGroup]="filtersGroup" (ngSubmit)="onSubmit()">
+    <div class="object-container">
+
+        <app-dropdown formControlName="filterType" [data]="customFilters" [placeholder]="'Select filter type'"></app-dropdown>
+        <app-dropdown formControlName="listOfOperators" [data]="operators" [placeholder]="'Select operator'"></app-dropdown>
+
+        <button type="submit" [disabled]="filtersGroup.invalid">Submit</button>
+
+    </div>
+</form>

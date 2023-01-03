@@ -1,3 +1,4 @@
-<select>
-    <option *ngFor="let option of data" [value]="option.key">{{ option.name }}</option>
+<select class="container">
+    <option value="" selected class="placeholder" [ngStyle]="{'color': 'gray'}" >{{ placeholder }}</option>
+    <option *ngFor="let option of data" [value]="option.key" required>{{ option.name }}</option>
 </select>

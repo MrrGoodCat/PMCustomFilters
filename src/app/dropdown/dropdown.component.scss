@@ -6,6 +6,7 @@ select {
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    width: 300px;
   }
 
   select option:hover {
@@ -20,4 +21,9 @@ select {
     top: 50%;
     position: absolute;
     transform: translateY(-50%);
+  }
+
+  .placeholder {
+    color: gray !important;
+    display: none;
   }

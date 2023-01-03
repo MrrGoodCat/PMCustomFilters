@@ -3,6 +3,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ComboBoxItem } from '../Interfaces/ComboBoxItem';
 import { Observable, Subscription } from 'rxjs';
 import { DataService } from '../Services/DataService';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-custom-filter-object',
@@ -13,13 +14,16 @@ export class CustomFilterObjectComponent implements OnInit, OnDestroy {
 
   constructor(
     private dataService: DataService,
+    private formBuilder: FormBuilder
     ) { 
       this.customFilters = [];
       this.operators = [];
+      this.filtersGroup = this.formBuilder.group({})
     }
 
   public customFilters: ComboBoxItem[];
   public operators: ComboBoxItem[];
+  public filtersGroup: FormGroup;
   
   private subscription = new Subscription();
 
@@ -32,6 +36,12 @@ export class CustomFilterObjectComponent implements OnInit, OnDestroy {
     this.subscription.add(this.dataService.getOperators().subscribe((data) => {
       this.operators = this.convertOperatorsToComboBoxItems(data);
     }));
+
+    this.filtersGroup = this.formBuilder.group({
+      filterType: ['', Validators.required],
+      listOfOperators: ['', Validators.required]
+
+    })
   }
 
   private convertCustomFiltersToComboBoxItems(customFilters: string[]): ComboBoxItem[] {
@@ -49,6 +59,10 @@ export class CustomFilterObjectComponent implements OnInit, OnDestroy {
         name: operator
       }
     })
+  }
+
+  onSubmit() {
+    console.log(this.filtersGroup.value);
   }
 
   ngOnDestroy(): void {
