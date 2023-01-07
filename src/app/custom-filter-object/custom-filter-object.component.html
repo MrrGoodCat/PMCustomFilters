@@ -1,8 +1,19 @@
 <form [formGroup]="filtersGroup" (ngSubmit)="onSubmit()">
     <div class="object-container">
 
-        <app-dropdown formControlName="filterType" [data]="customFilters" [placeholder]="'Select filter type'"></app-dropdown>
-        <app-dropdown formControlName="listOfOperators" [data]="operators" [placeholder]="'Select operator'"></app-dropdown>
+        <!-- <app-dropdown formControlName="filterType" [data]="customFilters" [placeholder]="'Select filter type'"></app-dropdown>
+        <app-dropdown formControlName="listOfOperators" [data]="operators" [placeholder]="'Select operator'"></app-dropdown> -->
+
+        <app-custom-dropdown
+            formControlName="filterType"
+            [options]="customFilters"
+            [placeholder]="'Select filter type'"
+            (selectedOption)="onCustomFilterTypeSelected($event)"></app-custom-dropdown>
+        <app-custom-dropdown
+            formControlName="listOfOperators"
+            [options]="operators"
+            [placeholder]="'Select operator'"
+            (selectedOption)="onOperatorSelected($event)"></app-custom-dropdown>
 
         <button type="submit" [disabled]="filtersGroup.invalid">Submit</button>
 

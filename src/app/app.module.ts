@@ -7,12 +7,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { CustomFilterObjectComponent } from './custom-filter-object/custom-filter-object.component';
 import { DropdownComponent } from './dropdown/dropdown.component';
+import { CustomDropdownComponent } from './custom-dropdown/custom-dropdown.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CustomFilterObjectComponent,
-    DropdownComponent
+    DropdownComponent,
+    CustomDropdownComponent
   ],
   imports: [
     BrowserModule,

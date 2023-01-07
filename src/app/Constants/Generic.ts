@@ -1,7 +1,7 @@
 import { CustomFiltersOperators } from "../Enums/CustomFiltersOperators";
 import { CustomFilterTypes } from "../Enums/CustomFilterTypes";
 
-const FILTERS_TO_OPERATORS_MAPPING = new Map<CustomFilterTypes | 'Default', CustomFiltersOperators[]>([
+export const FILTERS_TO_OPERATORS_MAPPING = new Map<CustomFilterTypes | 'Default', CustomFiltersOperators[]>([
     ['Default', [CustomFiltersOperators.Is, CustomFiltersOperators.IsNot, CustomFiltersOperators.Contains]],
     [CustomFilterTypes.AGENT_ID, [CustomFiltersOperators.Is]],
     [CustomFilterTypes.AGENT_PHONE_NUMBER, [CustomFiltersOperators.Is, CustomFiltersOperators.IsNot]],

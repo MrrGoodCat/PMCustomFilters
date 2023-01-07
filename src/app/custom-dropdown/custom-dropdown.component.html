@@ -1,0 +1,12 @@
+<div class="dropdown">
+    <div class="selected" (click)="isOpen = !isOpen">
+      {{ selected.name ? selected.name : placeholder }}
+    </div>
+    <div class="options" *ngIf="isOpen">
+      <input type="text" [(ngModel)]="searchText" placeholder="Search...">
+      <div class="option" *ngFor="let option of filterOptions()" (click)="selectOption(option)">
+        {{ option.name }}
+      </div>
+    </div>
+  </div>
+  
