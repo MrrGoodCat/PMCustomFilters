@@ -6,14 +6,33 @@
 
         <app-custom-dropdown
             formControlName="filterType"
-            [options]="customFilters"
+            [options]="customFilters" 
             [placeholder]="'Select filter type'"
-            (selectedOption)="onCustomFilterTypeSelected($event)"></app-custom-dropdown>
-        <app-custom-dropdown
-            formControlName="listOfOperators"
+            (selectedOption)="onCustomFilterTypeSelected($event)">
+        </app-custom-dropdown>
+
+        <app-custom-dropdown 
+            #operatorDropdown 
+            formControlName="listOfOperators" 
             [options]="operators"
-            [placeholder]="'Select operator'"
-            (selectedOption)="onOperatorSelected($event)"></app-custom-dropdown>
+            [placeholder]="'Select operator'" 
+            (selectedOption)="onOperatorSelected($event)">
+        </app-custom-dropdown>
+
+        <div [ngSwitch]="valueComponentType">
+            <app-custom-dropdown *ngSwitchCase="ValueComponentTypes.Dropdown" 
+                #valueDropdown 
+                formControlName="value"
+                [options]="values" 
+                [placeholder]="'Select value'"
+                (selectedOption)="onValueSelected($event)">
+            </app-custom-dropdown>
+            
+            <app-custom-text-field *ngSwitchCase="ValueComponentTypes.Text" 
+                formControlName="value"
+                [placeholder]="'Type in value'">
+            </app-custom-text-field>
+        </div>
 
         <button type="submit" [disabled]="filtersGroup.invalid">Submit</button>
 

@@ -18,12 +18,17 @@ export class CustomDropdownComponent implements OnInit, ControlValueAccessor, Va
   @Input() options: ComboBoxItem[]; // define an input property for the options
   @Input() placeholder: string; // define an input property for the placeholder text
   @Output() selectedOption: EventEmitter<ComboBoxItem> = new EventEmitter(); // define an output property for the selected option
+
+
   value: string = '';
+  isOpen = false;
+  selected: ComboBoxItem;
+  searchText = '';
 
   constructor() { 
     this.options = [];
     this.placeholder = '';
-    this.selected = {key: 0, name: ''}
+    this.selected = {key: 0, name: ''};
   }
 
   onChange: (value: string) => void = () => {};
@@ -55,9 +60,14 @@ export class CustomDropdownComponent implements OnInit, ControlValueAccessor, Va
     throw new Error('Method not implemented.');
   }
 
-  isOpen = false;
-  selected: ComboBoxItem;
-  searchText = '';
+  clickOutside() {
+    this.isOpen = false;
+  }
+
+  resetSelectedOption() {
+    this.selected = {key: 0, name: ''};
+    this.selectedOption.emit(this.selected);
+  }
 
   selectOption(option: ComboBoxItem) {
     this.selected = option;

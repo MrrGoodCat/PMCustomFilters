@@ -1,0 +1,14 @@
+.text-field-container {
+  display: flex;
+  flex-direction: column;
+
+  input {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #161b22;
+    width: 250px;
+    color: white;
+  }
+}

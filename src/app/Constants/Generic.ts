@@ -17,4 +17,14 @@ export const FILTERS_TO_OPERATORS_MAPPING = new Map<CustomFilterTypes | 'Default
     [CustomFilterTypes.NX_SALES_CONSENT_VIOLATIONS, [CustomFiltersOperators.Is]],
     [CustomFilterTypes.NX_SCRIPT_ADHERENCE_VIOLATIONS, [CustomFiltersOperators.Is]],
     [CustomFilterTypes.SITE_ID, [CustomFiltersOperators.Is, CustomFiltersOperators.IsNot]],
-])
+]);
+export const UI_OPERATORS_MAPPING = new Map<CustomFiltersOperators, string>([
+    [CustomFiltersOperators.Is, 'is'],
+    [CustomFiltersOperators.IsNot, 'is not'],
+    [CustomFiltersOperators.Contains, 'contains'],
+    [CustomFiltersOperators.AnyOf, 'any of'],
+    [CustomFiltersOperators.Greater, '>'],
+    [CustomFiltersOperators.Less, '<'],
+    [CustomFiltersOperators.GreaterOrEqual, '>='],
+    [CustomFiltersOperators.LessOrEqual, '<='],
+]);
