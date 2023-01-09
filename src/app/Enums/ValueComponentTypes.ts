@@ -1,6 +1,6 @@
 export enum ValueComponentTypes {
     Text = 'Text',
-    Dropdown = 'Dropdown',
+    Select = 'Select',
     Time = 'Time',
     File = 'File'
 }

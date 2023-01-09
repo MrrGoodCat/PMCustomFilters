@@ -8,6 +8,7 @@
             formControlName="filterType"
             [options]="customFilters" 
             [placeholder]="'Select filter type'"
+            [isSearchEnabled]="true"
             (selectedOption)="onCustomFilterTypeSelected($event)">
         </app-custom-dropdown>
 
@@ -15,12 +16,13 @@
             #operatorDropdown 
             formControlName="listOfOperators" 
             [options]="operators"
-            [placeholder]="'Select operator'" 
+            [placeholder]="'Select operator'"
+            [isSearchEnabled]="false" 
             (selectedOption)="onOperatorSelected($event)">
         </app-custom-dropdown>
 
         <div [ngSwitch]="valueComponentType">
-            <app-custom-dropdown *ngSwitchCase="ValueComponentTypes.Dropdown" 
+            <app-custom-dropdown *ngSwitchCase="ValueComponentTypes.Select" 
                 #valueDropdown 
                 formControlName="value"
                 [options]="values" 
@@ -28,7 +30,7 @@
                 (selectedOption)="onValueSelected($event)">
             </app-custom-dropdown>
             
-            <app-custom-text-field *ngSwitchCase="ValueComponentTypes.Text" 
+            <app-custom-text-field *ngSwitchDefault 
                 formControlName="value"
                 [placeholder]="'Type in value'">
             </app-custom-text-field>

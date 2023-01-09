@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnInit, forwardRef } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, forwardRef, ElementRef, Renderer2 } from '@angular/core';
 import { AbstractControl, ControlValueAccessor, NG_VALUE_ACCESSOR, ValidationErrors, Validator } from '@angular/forms';
 import { ComboBoxItem } from '../Interfaces/ComboBoxItem';
 
@@ -17,6 +17,7 @@ import { ComboBoxItem } from '../Interfaces/ComboBoxItem';
 export class CustomDropdownComponent implements OnInit, ControlValueAccessor, Validator {
   @Input() options: ComboBoxItem[]; // define an input property for the options
   @Input() placeholder: string; // define an input property for the placeholder text
+  @Input() isSearchEnabled: boolean; // define an input property for the search through the options
   @Output() selectedOption: EventEmitter<ComboBoxItem> = new EventEmitter(); // define an output property for the selected option
 
 
@@ -25,19 +26,25 @@ export class CustomDropdownComponent implements OnInit, ControlValueAccessor, Va
   selected: ComboBoxItem;
   searchText = '';
 
-  constructor() { 
+  constructor(private _renderer: Renderer2, private _elementRef: ElementRef) { 
     this.options = [];
     this.placeholder = '';
+    this.isSearchEnabled = false;
     this.selected = {key: 0, name: ''};
   }
 
-  onChange: (value: string) => void = () => {};
+  onChange: (value: string) => void = () => {
+    console.log('onChange: ' + this.value);
+  };
   onTouched: () => void = () => {};
 
   ngOnInit(): void {
     
   }
   writeValue(obj: any): void {
+    this._renderer.setProperty(this._elementRef.nativeElement, 'value', obj);
+    console.log('writeValue: ' + obj);
+    
     this.value = obj;
   }
   registerOnChange(fn: any): void {
@@ -65,7 +72,6 @@ export class CustomDropdownComponent implements OnInit, ControlValueAccessor, Va
   }
 
   resetSelectedOption() {
-    this.selected = {key: 0, name: ''};
     this.selectedOption.emit(this.selected);
   }
 
