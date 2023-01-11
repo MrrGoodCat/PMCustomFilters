@@ -72,6 +72,7 @@ export class CustomDropdownComponent implements OnInit, ControlValueAccessor, Va
   }
 
   resetSelectedOption() {
+    this.selected = {key: 0, name: ''}
     this.selectedOption.emit(this.selected);
   }
 

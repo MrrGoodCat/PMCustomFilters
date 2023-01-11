@@ -66,7 +66,7 @@ export class CustomFilterObjectComponent implements OnInit, OnDestroy {
   }
 
   onCustomFilterTypeSelected(event: any) {
-    //FIXME: reset operator after filter selection
+    //FIXME: #1 reset operator after filter selection
     this.operatorDropdown.resetSelectedOption();
     if (this.valueDropdown) {
       this.valueDropdown.resetSelectedOption();
