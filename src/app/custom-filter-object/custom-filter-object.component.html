@@ -1,1 +1,6 @@
-<p>custom-filter-object works!</p>
+<div class="searchable-dropdown ">
+<input type="text" [(ngModel)]="searchQuery" (ngModelChange)="filterOptions()" placeholder="{{placeholder}}">
+    <select class=".options-container" (change)="onOptionSelected($event)">
+      <option *ngFor="let option of filteredOptions" [value]="option">{{ option }}</option>
+    </select>
+</div>
